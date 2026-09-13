@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
   const off = Math.round(((product.mrp - product.price) / product.mrp) * 100);
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-lift">
+    <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-lift">
       <div className="relative overflow-hidden bg-cream">
         <img
           src={product.image}
@@ -29,7 +29,7 @@ export function ProductCard({ product }: { product: Product }) {
           loading="lazy"
           width={800}
           height={800}
-          className="h-56 w-full object-contain p-6 transition-transform duration-700 group-hover:scale-105"
+          className="h-64 w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         {product.tag && (
           <span className="absolute top-4 left-4 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold tracking-wide text-primary-foreground uppercase">
@@ -43,7 +43,7 @@ export function ProductCard({ product }: { product: Product }) {
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center gap-2 text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
-          <span>{product.type} ghee</span>
+          <span>{product.type === "Shilajit" ? "Himalayan resin" : `${product.type} ghee`}</span>
           <span className="h-1 w-1 rounded-full bg-border" />
           <span>{product.weight}</span>
         </div>
@@ -64,7 +64,7 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
           <button
             onClick={() => toast.success(`${product.name} added to cart`)}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
           >
             <ShoppingBag className="h-4 w-4" /> Add
           </button>

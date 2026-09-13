@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SlidersHorizontal, Star } from "lucide-react";
-import { products, type GheeType, type Weight } from "@/data/products";
+import { products, type ProductType, type Weight } from "@/data/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/Reveal";
 
@@ -26,8 +26,8 @@ export const Route = createFileRoute("/shop")({
   component: ShopPage,
 });
 
-const weights: Weight[] = ["200g", "250g", "500g", "1L"];
-const types: GheeType[] = ["Cow", "Buffalo"];
+const weights: Weight[] = ["20g", "200g", "250g", "500g", "1L"];
+const types: ProductType[] = ["Cow", "Buffalo", "Shilajit"];
 const sorts = [
   { key: "popularity", label: "Popularity" },
   { key: "newest", label: "Newest" },
@@ -38,7 +38,7 @@ const sorts = [
 function ShopPage() {
   const [maxPrice, setMaxPrice] = useState(2500);
   const [selWeights, setSelWeights] = useState<Weight[]>([]);
-  const [selTypes, setSelTypes] = useState<GheeType[]>([]);
+  const [selTypes, setSelTypes] = useState<ProductType[]>([]);
   const [minRating, setMinRating] = useState(0);
   const [sort, setSort] = useState<(typeof sorts)[number]["key"]>("popularity");
   const [openFilters, setOpenFilters] = useState(false);
@@ -115,7 +115,7 @@ function ShopPage() {
                 onChange={() => toggle(selTypes, setSelTypes, t)}
                 className="h-4 w-4 accent-primary"
               />
-              {t} ghee
+              {t === "Shilajit" ? t : `${t} ghee`}
             </label>
           ))}
         </div>
@@ -160,14 +160,13 @@ function ShopPage() {
     <main className="mx-auto max-w-7xl px-4 py-12">
       <Reveal>
         <p className="text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-          The ghee shelf
+          The mountain pantry
         </p>
         <h1 className="mt-3 font-display text-4xl leading-tight font-semibold sm:text-5xl">
-          Every jar, churned this week
+          Pahadi essentials, made in small batches
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">
-          A2 Gir cow ghee, pure Pahadi ghee and buffalo ghee — from 200g trial jars to
-          1 litre family jars.
+          A2 Gir cow ghee, pure Pahadi ghee, buffalo ghee and mineral-rich Himalayan shilajit.
         </p>
       </Reveal>
 

@@ -3,7 +3,7 @@ import { Leaf } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-border bg-cream">
+    <footer className="border-t border-border bg-forest text-forest-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
@@ -12,14 +12,14 @@ export function Footer() {
             </span>
             <span className="font-display text-lg font-semibold">Dharti Organics</span>
           </div>
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
+          <p className="mt-4 max-w-xs text-sm text-forest-foreground/70">
             Small-batch A2 and Pahadi ghee, bilona churned by partner families across
             Gujarat and Uttarakhand.
           </p>
         </div>
         <div>
           <h3 className="text-sm font-semibold">Shop</h3>
-          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+          <ul className="mt-4 space-y-2 text-sm text-forest-foreground/70">
             <li>
               <Link to="/shop" className="hover:text-primary">
                 All ghee
@@ -44,7 +44,7 @@ export function Footer() {
         </div>
         <div>
           <h3 className="text-sm font-semibold">Company</h3>
-          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+          <ul className="mt-4 space-y-2 text-sm text-forest-foreground/70">
             <li>
               <Link to="/our-farms" className="hover:text-primary">
                 Our farms
@@ -56,12 +56,12 @@ export function Footer() {
         </div>
         <div>
           <h3 className="text-sm font-semibold">Stay in touch</h3>
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="mt-4 text-sm text-forest-foreground/70">
             Recipes, harvest notes and early access to new batches.
           </p>
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="mt-4 flex overflow-hidden rounded-full border border-border bg-background"
+            className="mt-4 flex overflow-hidden rounded-md border border-forest-foreground/25 bg-background"
           >
             <input
               type="email"
@@ -75,7 +75,7 @@ export function Footer() {
           </form>
         </div>
       </div>
-      <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
+      <div className="border-t border-forest-foreground/15 py-5 text-center text-xs text-forest-foreground/60">
         © {new Date().getFullYear()} Dharti Organics. All rights reserved.
       </div>
     </footer>
