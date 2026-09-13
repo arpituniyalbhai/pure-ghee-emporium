@@ -2,15 +2,16 @@ import jarA2 from "@/assets/jar-a2.jpg";
 import jarPahadi from "@/assets/jar-pahadi.jpg";
 import jarBuffalo from "@/assets/jar-buffalo.jpg";
 import heroGhee from "@/assets/hero-ghee.jpg";
+import shilajit from "@/assets/pahadi-shilajit.jpg";
 
-export type GheeType = "Cow" | "Buffalo";
-export type Weight = "200g" | "250g" | "500g" | "1L";
+export type ProductType = "Cow" | "Buffalo" | "Shilajit";
+export type Weight = "20g" | "200g" | "250g" | "500g" | "1L";
 
 export interface Product {
   id: string;
   name: string;
   subtitle: string;
-  type: GheeType;
+  type: ProductType;
   weight: Weight;
   price: number;
   mrp: number;
@@ -23,6 +24,21 @@ export interface Product {
 }
 
 export const products: Product[] = [
+  {
+    id: "shilajit-20",
+    name: "Pure Pahadi Shilajit 20g",
+    subtitle: "Mineral-rich Himalayan resin, purified in small batches",
+    type: "Shilajit",
+    weight: "20g",
+    price: 1299,
+    mrp: 1599,
+    rating: 4.7,
+    reviews: 146,
+    popularity: 88,
+    added: 9,
+    image: shilajit,
+    tag: "Pahadi pure",
+  },
   {
     id: "a2-200",
     name: "A2 Gir Cow Ghee 200g",

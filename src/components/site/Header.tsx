@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Leaf, Menu, ShoppingBag, X } from "lucide-react";
+import { Leaf, Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const nav = [
@@ -21,32 +21,26 @@ export function Header() {
 
   return (
     <>
-      <div className="bg-primary py-2 text-center text-xs font-medium tracking-wide text-primary-foreground">
-        Free shipping across India on orders above ₹999 · Lab-tested purity in every jar
+      <div className="overflow-hidden bg-promo py-2.5 text-promo-foreground">
+        <div className="offer-track flex min-w-max items-center gap-12 text-[11px] font-semibold uppercase sm:text-xs">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex items-center gap-12" aria-hidden={copy === 1}>
+              <span>Harvest offer: up to 18% off</span><span>✦</span>
+              <span>Free delivery above ₹999</span><span>✦</span>
+              <span>Small-batch Pahadi ghee</span><span>✦</span>
+            </div>
+          ))}
+        </div>
       </div>
       <header
-        className={`sticky top-0 z-50 transition-all duration-500 ${
+        className={`sticky top-0 z-50 border-b border-border transition-all duration-500 ${
           scrolled
-            ? "border-b border-border bg-background/70 backdrop-blur-xl shadow-soft"
-            : "bg-background/40 backdrop-blur-sm"
+            ? "bg-background/95 backdrop-blur-xl shadow-soft"
+            : "bg-background"
         }`}
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-4 sm:flex sm:justify-between">
-          <Link to="/" className="flex min-w-0 items-center gap-2">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary">
-              <Leaf className="h-5 w-5 text-primary-foreground" />
-            </span>
-            <span className="min-w-0">
-              <span className="block truncate font-display text-lg leading-tight font-semibold text-foreground">
-                Dharti Organics
-              </span>
-              <span className="block text-[11px] tracking-[0.18em] text-muted-foreground uppercase">
-                Pure A2 Ghee
-              </span>
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-8 md:flex">
+        <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 py-4 md:py-5">
+          <nav className="hidden items-center gap-7 md:flex">
             {nav.map((n) => (
               <Link
                 key={n.to}
@@ -59,17 +53,38 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex min-w-0 items-center justify-center gap-2 text-center">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-primary/25 bg-secondary">
+              <Leaf className="h-5 w-5 text-primary" />
+            </span>
+            <span className="min-w-0">
+              <span className="block truncate font-display text-lg leading-tight font-bold text-foreground sm:text-xl">
+                Dharti Organics
+              </span>
+              <span className="block text-[9px] font-semibold tracking-[0.22em] text-primary uppercase">
+                From the Himalayan soil
+              </span>
+            </span>
+          </Link>
+
+          <div className="flex items-center justify-end gap-1 sm:gap-2">
+            <Link to="/shop" aria-label="Search products" className="hidden h-10 w-10 place-items-center text-foreground transition hover:text-primary sm:grid">
+              <Search className="h-5 w-5" />
+            </Link>
+            <span aria-label="Account" className="hidden h-10 w-10 place-items-center text-foreground sm:grid">
+              <UserRound className="h-5 w-5" />
+            </span>
             <Link
               to="/shop"
-              className="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 sm:inline-flex"
+              aria-label="Shopping bag"
+              className="grid h-10 w-10 place-items-center text-foreground transition hover:text-primary"
             >
-              <ShoppingBag className="h-4 w-4" /> Shop ghee
+              <ShoppingBag className="h-5 w-5" />
             </Link>
             <button
               aria-label="Toggle menu"
               onClick={() => setOpen((o) => !o)}
-              className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground md:hidden"
+              className="grid h-10 w-10 place-items-center border-l border-border text-foreground md:hidden"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>

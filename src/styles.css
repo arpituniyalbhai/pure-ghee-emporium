@@ -19,10 +19,14 @@
  */
 
 @theme inline {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Libre Baskerville", ui-serif, Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
   --color-cream: var(--cream);
   --color-gold: var(--gold);
+  --color-promo: var(--promo);
+  --color-promo-foreground: var(--promo-foreground);
+  --color-forest: var(--forest);
+  --color-forest-foreground: var(--forest-foreground);
   --shadow-soft: 0 6px 24px -12px color-mix(in oklab, var(--primary) 35%, transparent);
   --shadow-lift: 0 24px 60px -28px color-mix(in oklab, var(--primary) 45%, transparent);
 
@@ -69,14 +73,14 @@
 }
 
 :root {
-  --radius: 0.875rem;
-  --background: oklch(1 0 0);
+  --radius: 0.5rem;
+  --background: oklch(0.995 0.004 95);
   --foreground: oklch(0.22 0.03 150);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.22 0.03 150);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 150);
-  --primary: oklch(0.47 0.115 152);
+  --primary: oklch(0.39 0.09 145);
   --primary-foreground: oklch(0.99 0.008 120);
   --secondary: oklch(0.96 0.02 145);
   --secondary-foreground: oklch(0.3 0.06 152);
@@ -89,8 +93,12 @@
   --border: oklch(0.91 0.018 145);
   --input: oklch(0.91 0.018 145);
   --ring: oklch(0.47 0.115 152);
-  --cream: oklch(0.975 0.016 110);
-  --gold: oklch(0.78 0.14 82);
+  --cream: oklch(0.965 0.025 88);
+  --gold: oklch(0.72 0.14 75);
+  --promo: oklch(0.51 0.15 57);
+  --promo-foreground: oklch(0.99 0.01 92);
+  --forest: oklch(0.25 0.055 145);
+  --forest-foreground: oklch(0.97 0.018 92);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -162,7 +170,19 @@
   h3,
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
+}
+
+@keyframes offer-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.offer-track { animation: offer-scroll 24s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .offer-track { animation: none; }
 }
 
