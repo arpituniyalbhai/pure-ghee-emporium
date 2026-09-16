@@ -1,14 +1,5 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Panchganga Organics — robots.txt
 User-agent: *
 Allow: /
+
+Sitemap: https://panchgangaorganics.com/sitemap.xml

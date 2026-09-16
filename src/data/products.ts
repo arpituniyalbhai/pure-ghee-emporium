@@ -32,6 +32,8 @@ export interface Product {
   description?: string;
   /** If set, clicking the card goes here instead of /product/:id */
   dedicatedRoute?: string;
+  /** If true, item shows as sold out and is not clickable */
+  soldOut?: boolean;
 }
 
 export const products: Product[] = [
@@ -44,19 +46,20 @@ export const products: Product[] = [
     reviews: 862,
     popularity: 98,
     added: 5,
-    image: heroGhee,
+    image: "/ghee-process-banner.png",
     tag: "Bestseller",
     dedicatedRoute: "/pahadi-a2-ghee",
     description: "Our authentic A2 Gir Cow Ghee is made using the traditional bilona method. 25 litres of fresh milk go into every litre of our hand-churned ghee — nothing else does. Grass-fed and lab-tested for purity.",
     variants: [
       { id: "a2-200", weight: "200g", price: 499, mrp: 649 },
-      { id: "a2-500", weight: "500g", price: 1149, mrp: 1399 },
-      { id: "a2-1l", weight: "1L", price: 2149, mrp: 2599 },
+      { id: "a2-500", weight: "500g", price: 999, mrp: 1399 },
+      { id: "a2-1l", weight: "1L", price: 1699, mrp: 2599 },
     ],
   },
   {
     id: "raw-honey",
     name: "Organic Raw Honey",
+    soldOut: true,
     subtitle: "Unprocessed, unfiltered pure wildflower honey",
     type: "Honey",
     rating: 4.8,
@@ -74,6 +77,7 @@ export const products: Product[] = [
   {
     id: "mustard-oil",
     name: "Cold-Pressed Mustard Oil",
+    soldOut: true,
     subtitle: "Kachi ghani, pungent and pure",
     type: "Oil",
     rating: 4.7,
@@ -90,6 +94,7 @@ export const products: Product[] = [
   {
     id: "white-quinoa",
     name: "Organic White Quinoa",
+    soldOut: true,
     subtitle: "High-protein, gluten-free superfood",
     type: "Superfood",
     rating: 4.6,
@@ -107,6 +112,7 @@ export const products: Product[] = [
   {
     id: "turmeric-powder",
     name: "Organic Turmeric Powder",
+    soldOut: true,
     subtitle: "High curcumin, single-origin",
     type: "Spice",
     rating: 4.9,
@@ -122,6 +128,7 @@ export const products: Product[] = [
   {
     id: "pahadi-haldi",
     name: "Pahadi Organic Haldi",
+    soldOut: true,
     subtitle: "High Curcumin (5%+), stone-ground mountain turmeric from Uttarakhand",
     type: "Spice",
     rating: 4.95,
@@ -139,6 +146,7 @@ export const products: Product[] = [
   {
     id: "pahadi-shilajit",
     name: "Pure Pahadi Shilajit",
+    soldOut: true,
     subtitle: "Mineral-rich Himalayan resin, purified in small batches",
     type: "Resin",
     rating: 4.7,
@@ -166,7 +174,7 @@ export const reviews = [
     name: "Rohit Verma",
     city: "Delhi",
     rating: 5,
-    text: "Switched from commercial store brands to Dharti Organics. The raw honey and Pahadi ghee are unmatched in quality.",
+    text: "Switched from commercial store brands to Panchganga Organics. The raw honey and Pahadi ghee are unmatched in quality.",
     product: "Organic Raw Wild Honey",
     date: "Verified Buyer",
   },
@@ -190,7 +198,7 @@ export const reviews = [
     name: "Dr. Sunita Rao",
     city: "Hyderabad",
     rating: 5,
-    text: "As a nutritionist, I am very picky about oils and ghee. Dharti Organics lab report transparency sold me completely.",
+    text: "As a nutritionist, I am very picky about oils and ghee. Panchganga Organics lab report transparency sold me completely.",
     product: "Pahadi A2 Gir Cow Ghee",
     date: "Verified Buyer",
   },

@@ -80,9 +80,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dharti Organics | Pahadi Ghee & Shilajit" },
-      { name: "description", content: "Traditional Pahadi ghee and pure Himalayan shilajit from Dharti Organics." },
-      { name: "author", content: "Dharti Organics" },
+      { title: "Panchganga Organics | Pahadi A2 Ghee & Vedic Superfoods" },
+      { name: "description", content: "Traditional Pahadi A2 Ghee and pure Vedic superfoods from Panchganga Organics." },
+      { name: "author", content: "Panchganga Organics" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

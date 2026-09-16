@@ -8,19 +8,36 @@ import { Reveal } from "@/components/Reveal";
 export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
-      { title: "Shop A2 & Pahadi Ghee Online | Dharti Organics" },
+      { title: "Shop A2 & Pahadi Ghee Online | Panchganga Organics" },
       {
         name: "description",
         content:
           "Buy bilona-churned A2 cow ghee, pure Pahadi ghee and buffalo ghee in 200g, 250g, 500g and 1 litre jars. Filter by price, weight, type and rating.",
       },
-      { property: "og:title", content: "Shop A2 & Pahadi Ghee Online | Dharti Organics" },
+      { property: "og:title", content: "Shop A2 & Pahadi Ghee Online | Panchganga Organics" },
       {
         property: "og:description",
         content: "8 small-batch ghee jars from 200g to 1 litre, filtered the way you shop.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Shop A2 & Pahadi Ghee Online",
+          description: "Buy bilona-churned A2 cow ghee, pure Pahadi ghee and buffalo ghee in 200g, 250g, 500g and 1 litre jars.",
+          url: "https://panchgangaorganics.com/shop",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Panchganga Organics",
+            url: "https://panchgangaorganics.com/"
+          }
+        }),
+      },
     ],
   }),
   component: ShopPage,

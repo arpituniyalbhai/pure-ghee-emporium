@@ -12,6 +12,45 @@ export const Route = createFileRoute("/product/$id")({
     if (!product) throw notFound();
     return product;
   },
+  head: ({ loaderData }) => {
+    if (!loaderData) return {};
+    const product = loaderData;
+    return {
+      meta: [
+        { title: `${product.name} | Panchganga Organics` },
+        { name: "description", content: (product.description ?? "").substring(0, 160) },
+        { property: "og:title", content: `${product.name} | Panchganga Organics` },
+        { property: "og:description", content: (product.description ?? "").substring(0, 160) },
+        { property: "og:image", content: `https://panchgangaorganics.com${product.image}` },
+        { property: "og:type", content: "product" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            name: product.name,
+            image: [`https://panchgangaorganics.com${product.image}`],
+            description: product.description,
+            brand: {
+              "@type": "Brand",
+              name: "Panchganga Organics"
+            },
+            offers: {
+              "@type": "AggregateOffer",
+              url: `https://panchgangaorganics.com/product/${product.id}`,
+              priceCurrency: "INR",
+              lowPrice: product.variants?.[0]?.price?.toString() || "0",
+              highPrice: product.variants?.[product.variants.length - 1]?.price?.toString() || "0",
+              offerCount: product.variants?.length?.toString() || "1",
+              availability: "https://schema.org/InStock"
+            }
+          }),
+        },
+      ],
+    };
+  },
   component: ProductPage,
 });
 

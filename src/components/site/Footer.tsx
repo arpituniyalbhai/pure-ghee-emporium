@@ -10,7 +10,7 @@ export function Footer() {
             <span className="grid h-9 w-9 place-items-center rounded-full bg-primary">
               <Leaf className="h-4 w-4 text-primary-foreground" />
             </span>
-            <span className="font-display text-lg font-semibold">Dharti Organics</span>
+            <span className="font-display text-lg font-semibold">Panchganga Organics</span>
           </div>
           <p className="mt-4 max-w-xs text-sm text-forest-foreground/70">
             Small-batch A2 and Pahadi ghee, bilona churned by partner families across
@@ -76,7 +76,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-forest-foreground/15 py-5 text-center text-xs text-forest-foreground/60">
-        © {new Date().getFullYear()} Dharti Organics. All rights reserved.
+        © {new Date().getFullYear()} Panchganga Organics. All rights reserved.
       </div>
     </footer>
   );

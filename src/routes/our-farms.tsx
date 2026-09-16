@@ -6,19 +6,36 @@ import bilona from "@/assets/bilona.jpg";
 export const Route = createFileRoute("/our-farms")({
   head: () => ({
     meta: [
-      { title: "Our Farms & Bilona Process | Dharti Organics Ghee" },
+      { title: "Our Farms & Bilona Process | Panchganga Organics Ghee" },
       {
         name: "description",
         content:
           "Meet the 120 partner families in Gujarat and Uttarakhand whose grass-fed Gir and hill cows make our A2 and Pahadi ghee.",
       },
-      { property: "og:title", content: "Our Farms & Bilona Process | Dharti Organics" },
+      { property: "og:title", content: "Our Farms & Bilona Process | Panchganga Organics" },
       {
         property: "og:description",
         content: "Grass-fed herds, hand-churned curd and slow wood-fire cooking.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "Our Farms & Bilona Process",
+          description: "Meet the 120 partner families in Gujarat and Uttarakhand whose grass-fed Gir and hill cows make our A2 and Pahadi ghee.",
+          url: "https://panchgangaorganics.com/our-farms",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Panchganga Organics",
+            url: "https://panchgangaorganics.com/"
+          }
+        }),
+      },
     ],
   }),
   component: FarmsPage,

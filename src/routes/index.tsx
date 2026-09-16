@@ -29,19 +29,32 @@ import heroGhee from "@/assets/hero-ghee.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dharti Organics — 100% Pure Pahadi Organic Foods & Staples" },
+      { title: "Panchganga Organics — 100% Pure Pahadi Organic Foods & Staples" },
       {
         name: "description",
         content:
           "Operating directly from high-altitude Pahadi farms. 100% pure, unadulterated A2 Gir cow ghee, raw honey, cold-pressed oils, and Himalayan shilajit.",
       },
-      { property: "og:title", content: "Dharti Organics — 100% Pure Pahadi Organic Staples" },
+      { property: "og:title", content: "Panchganga Organics — 100% Pure Pahadi Organic Staples" },
       {
         property: "og:description",
         content: "Grass-fed, bilona-churned Pahadi ghee & pure organic food directly from Himalayan farms.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Panchganga Organics",
+          url: "https://panchgangaorganics.com/",
+          logo: "https://panchgangaorganics.com/logo.png",
+          description: "100% pure, unadulterated A2 Gir cow ghee, raw honey, cold-pressed oils, and Himalayan shilajit directly from high-altitude Pahadi farms."
+        }),
+      },
     ],
   }),
   component: Home,
@@ -402,14 +415,14 @@ function Home() {
               <span>✦</span> Our Brand Story
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold leading-tight text-foreground">
-              Why We Founded Dharti Organics: Bringing Honesty Back to Pure Mountain Food
+              Why We Founded Panchganga Organics: Bringing Honesty Back to Pure Mountain Food
             </h2>
             <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed font-normal">
               <p>
                 When we looked closely at the supermarket shelves selling so-called &ldquo;organic&rdquo; foods, we were deeply disappointed. Despite fancy green labels and high price tags, most products were chemically processed, diluted with artificial preservatives, or mass-manufactured in industrial city plants. Even worse, the hard-working Pahadi farmers in remote Himalayan villages who toil endlessly under harsh weather were barely paid fair prices by middleman traders.
               </p>
               <p>
-                We built Dharti Organics to change this forever. Operating directly from untouched Pahadi valleys across Uttarakhand and Himachal, we cut out all middlemen. Our partner hill farmers wake up at 4 AM to milk free-grazing indigenous cows and cultivate heirloom grains using traditional methods passed down through generations.
+                We built Panchganga Organics to change this forever. Operating directly from untouched Pahadi valleys across Uttarakhand and Himachal, we cut out all middlemen. Our partner hill farmers wake up at 4 AM to milk free-grazing indigenous cows and cultivate heirloom grains using traditional methods passed down through generations.
               </p>
               <p>
                 By paying our farmers double the standard market rates directly into their hands, we ensure their livelihood thrives while guaranteeing you receive 100% pure, unadulterated food. No hidden chemicals, no machine shortcuts—just authentic Pahadi purity delivered from our soil straight to your family kitchen.
@@ -449,14 +462,14 @@ function Home() {
 
 
 
-      {/* Promotional Banner (Dharti Organics Delivers to You) - AT THE BOTTOM AFTER PRODUCTS */}
+      {/* Promotional Banner (Panchganga Organics Delivers to You) - AT THE BOTTOM AFTER PRODUCTS */}
       <section className="mx-auto max-w-7xl px-4 py-10">
         <Reveal>
           <div className="relative flex flex-col md:flex-row items-center justify-between overflow-hidden rounded-[2rem] bg-cream p-8 md:p-12 shadow-sm border border-border">
             <div className="max-w-xl text-center md:text-left z-10">
               <span className="text-xs font-semibold tracking-widest text-primary uppercase">Farm-to-Door Delivery</span>
               <h2 className="mt-1 font-display text-3xl font-semibold sm:text-4xl uppercase">
-                Dharti Organics Delivers to You
+                Panchganga Organics Delivers to You
               </h2>
               <p className="mt-3 text-muted-foreground text-sm sm:text-base">
                 Farm-fresh shipping. Free delivery over ₹999 on pure, organic staples directly from our Pahadi farms to your kitchen.

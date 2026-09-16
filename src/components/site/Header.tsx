@@ -45,14 +45,14 @@ export function Header() {
           <div className="flex items-center gap-8">
             <Link to="/" className="flex shrink-0 items-center gap-3">
               <span className="grid h-12 w-12 sm:h-14 sm:w-14 shrink-0 place-items-center rounded-2xl border-2 border-primary/30 bg-primary/10 shadow-sm overflow-hidden p-1">
-                <img src={logo} alt="Dharti Organics Logo" className="h-full w-full object-contain" />
+                <img src={logo} alt="Panchganga Organics Logo" className="h-full w-full object-contain" />
               </span>
               <span className="min-w-0">
                 <span className="block truncate font-display text-xl leading-tight font-bold text-foreground sm:text-2xl tracking-tight">
-                  Dharti Organics
+                  Panchganga Organics
                 </span>
                 <span className="block text-[10px] sm:text-[11px] font-bold tracking-[0.24em] text-primary uppercase mt-0.5">
-                  From the Himalayan soil
+                  100% Pure & Vedic Organics
                 </span>
               </span>
             </Link>
