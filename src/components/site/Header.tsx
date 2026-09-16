@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Leaf, Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import logo from "@/assets/logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
+  { to: "/pahadi-a2-ghee", label: "A2 Ghee" },
   { to: "/shop", label: "Shop" },
   { to: "/our-farms", label: "Our Farms" },
 ] as const;
@@ -39,33 +41,35 @@ export function Header() {
             : "bg-background"
         }`}
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 py-4 md:py-5">
-          <nav className="hidden items-center gap-7 md:flex">
-            {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                activeProps={{ className: "text-primary" }}
-                className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
-              >
-                {n.label}
-              </Link>
-            ))}
-          </nav>
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:py-5">
+          <div className="flex items-center gap-8">
+            <Link to="/" className="flex shrink-0 items-center gap-3">
+              <span className="grid h-12 w-12 sm:h-14 sm:w-14 shrink-0 place-items-center rounded-2xl border-2 border-primary/30 bg-primary/10 shadow-sm overflow-hidden p-1">
+                <img src={logo} alt="Dharti Organics Logo" className="h-full w-full object-contain" />
+              </span>
+              <span className="min-w-0">
+                <span className="block truncate font-display text-xl leading-tight font-bold text-foreground sm:text-2xl tracking-tight">
+                  Dharti Organics
+                </span>
+                <span className="block text-[10px] sm:text-[11px] font-bold tracking-[0.24em] text-primary uppercase mt-0.5">
+                  From the Himalayan soil
+                </span>
+              </span>
+            </Link>
 
-          <Link to="/" className="flex min-w-0 items-center justify-center gap-2 text-center">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-primary/25 bg-secondary">
-              <Leaf className="h-5 w-5 text-primary" />
-            </span>
-            <span className="min-w-0">
-              <span className="block truncate font-display text-lg leading-tight font-bold text-foreground sm:text-xl">
-                Dharti Organics
-              </span>
-              <span className="block text-[9px] font-semibold tracking-[0.22em] text-primary uppercase">
-                From the Himalayan soil
-              </span>
-            </span>
-          </Link>
+            <nav className="hidden items-center gap-7 md:flex">
+              {nav.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  activeProps={{ className: "text-primary font-semibold" }}
+                  className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
           <div className="flex items-center justify-end gap-1 sm:gap-2">
             <Link to="/shop" aria-label="Search products" className="hidden h-10 w-10 place-items-center text-foreground transition hover:text-primary sm:grid">

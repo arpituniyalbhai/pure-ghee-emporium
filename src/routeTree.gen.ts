@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OurFarmsRouteImport } from './routes/our-farms'
+import { Route as PahadiA2GheeRouteImport } from './routes/pahadi-a2-ghee'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ProductIdRouteImport } from './routes/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +25,64 @@ const OurFarmsRoute = OurFarmsRouteImport.update({
   path: '/our-farms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PahadiA2GheeRoute = PahadiA2GheeRouteImport.update({
+  id: '/pahadi-a2-ghee',
+  path: '/pahadi-a2-ghee',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductIdRoute = ProductIdRouteImport.update({
+  id: '/product/$id',
+  path: '/product/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/our-farms': typeof OurFarmsRoute
+  '/pahadi-a2-ghee': typeof PahadiA2GheeRoute
   '/shop': typeof ShopRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/our-farms': typeof OurFarmsRoute
+  '/pahadi-a2-ghee': typeof PahadiA2GheeRoute
   '/shop': typeof ShopRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/our-farms': typeof OurFarmsRoute
+  '/pahadi-a2-ghee': typeof PahadiA2GheeRoute
   '/shop': typeof ShopRoute
+  '/product/$id': typeof ProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/our-farms' | '/shop'
+  fullPaths: '/' | '/our-farms' | '/pahadi-a2-ghee' | '/shop' | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/our-farms' | '/shop'
-  id: '__root__' | '/' | '/our-farms' | '/shop'
+  to: '/' | '/our-farms' | '/pahadi-a2-ghee' | '/shop' | '/product/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/our-farms'
+    | '/pahadi-a2-ghee'
+    | '/shop'
+    | '/product/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   OurFarmsRoute: typeof OurFarmsRoute
+  PahadiA2GheeRoute: typeof PahadiA2GheeRoute
   ShopRoute: typeof ShopRoute
+  ProductIdRoute: typeof ProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +101,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OurFarmsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pahadi-a2-ghee': {
+      id: '/pahadi-a2-ghee'
+      path: '/pahadi-a2-ghee'
+      fullPath: '/pahadi-a2-ghee'
+      preLoaderRoute: typeof PahadiA2GheeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/$id': {
+      id: '/product/$id'
+      path: '/product/$id'
+      fullPath: '/product/$id'
+      preLoaderRoute: typeof ProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +128,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   OurFarmsRoute: OurFarmsRoute,
+  PahadiA2GheeRoute: PahadiA2GheeRoute,
   ShopRoute: ShopRoute,
+  ProductIdRoute: ProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

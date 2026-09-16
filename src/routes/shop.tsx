@@ -26,8 +26,8 @@ export const Route = createFileRoute("/shop")({
   component: ShopPage,
 });
 
-const weights: Weight[] = ["20g", "200g", "250g", "500g", "1L"];
-const types: ProductType[] = ["Cow", "Buffalo", "Shilajit"];
+const weights: Weight[] = ["20g", "200g", "250g", "500g", "1L", "1kg"];
+const types: ProductType[] = ["Ghee", "Honey", "Oil", "Superfood", "Spice", "Resin"];
 const sorts = [
   { key: "popularity", label: "Popularity" },
   { key: "newest", label: "Newest" },
@@ -47,16 +47,29 @@ function ShopPage() {
     set(list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
 
   const visible = useMemo(() => {
-    const list = products.filter(
-      (p) =>
-        p.price <= maxPrice &&
-        (selWeights.length === 0 || selWeights.includes(p.weight)) &&
-        (selTypes.length === 0 || selTypes.includes(p.type)) &&
-        p.rating >= minRating,
-    );
+    const list = products.filter((p) => {
+      // Find min price of variants
+      const minPrice = Math.min(...p.variants.map((v) => v.price));
+      const matchesPrice = minPrice <= maxPrice;
+      const matchesWeight =
+        selWeights.length === 0 || p.variants.some((v) => selWeights.includes(v.weight));
+      const matchesType = selTypes.length === 0 || selTypes.includes(p.type);
+      const matchesRating = p.rating >= minRating;
+
+      return matchesPrice && matchesWeight && matchesType && matchesRating;
+    });
+
     const sorted = [...list];
-    if (sort === "price-asc") sorted.sort((a, b) => a.price - b.price);
-    if (sort === "price-desc") sorted.sort((a, b) => b.price - a.price);
+    if (sort === "price-asc") {
+      sorted.sort(
+        (a, b) => Math.min(...a.variants.map((v) => v.price)) - Math.min(...b.variants.map((v) => v.price))
+      );
+    }
+    if (sort === "price-desc") {
+      sorted.sort(
+        (a, b) => Math.min(...b.variants.map((v) => v.price)) - Math.min(...a.variants.map((v) => v.price))
+      );
+    }
     if (sort === "newest") sorted.sort((a, b) => b.added - a.added);
     if (sort === "popularity") sorted.sort((a, b) => b.popularity - a.popularity);
     return sorted;
@@ -115,7 +128,7 @@ function ShopPage() {
                 onChange={() => toggle(selTypes, setSelTypes, t)}
                 className="h-4 w-4 accent-primary"
               />
-              {t === "Shilajit" ? t : `${t} ghee`}
+              {t}
             </label>
           ))}
         </div>

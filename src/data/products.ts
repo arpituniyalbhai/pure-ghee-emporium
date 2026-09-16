@@ -1,159 +1,155 @@
-import jarA2 from "@/assets/jar-a2.jpg";
-import jarPahadi from "@/assets/jar-pahadi.jpg";
-import jarBuffalo from "@/assets/jar-buffalo.jpg";
+import organicProductsAll from "@/assets/organic_products_all.png";
+import rawHoney from "@/assets/raw_honey.png";
+import mustardOil from "@/assets/mustard_oil.png";
+import quinoaPack from "@/assets/quinoa_pack.png";
+import turmericPowder from "@/assets/turmeric_powder.png";
 import heroGhee from "@/assets/hero-ghee.jpg";
+import jarBuffalo from "@/assets/jar-buffalo.jpg";
 import shilajit from "@/assets/pahadi-shilajit.jpg";
 
-export type ProductType = "Cow" | "Buffalo" | "Shilajit";
-export type Weight = "20g" | "200g" | "250g" | "500g" | "1L";
+export type ProductType = "Ghee" | "Honey" | "Oil" | "Superfood" | "Spice" | "Resin";
+export type Weight = "20g" | "200g" | "250g" | "500g" | "1L" | "1kg";
+
+export interface ProductVariant {
+  id: string;
+  weight: Weight;
+  price: number;
+  mrp: number;
+}
 
 export interface Product {
   id: string;
   name: string;
   subtitle: string;
   type: ProductType;
-  weight: Weight;
-  price: number;
-  mrp: number;
   rating: number;
   reviews: number;
   popularity: number;
-  added: number; // newness rank, higher = newer
+  added: number;
   image: string;
   tag?: string;
+  variants: ProductVariant[];
+  description?: string;
+  /** If set, clicking the card goes here instead of /product/:id */
+  dedicatedRoute?: string;
 }
 
 export const products: Product[] = [
   {
-    id: "shilajit-20",
-    name: "Pure Pahadi Shilajit 20g",
-    subtitle: "Mineral-rich Himalayan resin, purified in small batches",
-    type: "Shilajit",
-    weight: "20g",
-    price: 1299,
-    mrp: 1599,
-    rating: 4.7,
-    reviews: 146,
-    popularity: 88,
-    added: 9,
-    image: shilajit,
-    tag: "Pahadi pure",
-  },
-  {
-    id: "a2-200",
-    name: "A2 Gir Cow Ghee 200g",
-    subtitle: "Bilona churned, grass-fed Gir cows",
-    type: "Cow",
-    weight: "200g",
-    price: 499,
-    mrp: 649,
-    rating: 4.6,
-    reviews: 214,
-    popularity: 72,
-    added: 3,
-    image: jarA2,
-    tag: "Trial pack",
-  },
-  {
-    id: "a2-500",
-    name: "A2 Gir Cow Ghee 500g",
-    subtitle: "Our bestseller, slow-cooked in earthen pots",
-    type: "Cow",
-    weight: "500g",
-    price: 1149,
-    mrp: 1399,
+    id: "a2-ghee",
+    name: "A2 Gir Cow Ghee",
+    subtitle: "Bilona churned, grass-fed Gir cows, slow-cooked in earthen pots",
+    type: "Ghee",
     rating: 4.9,
     reviews: 862,
     popularity: 98,
     added: 5,
     image: heroGhee,
     tag: "Bestseller",
+    dedicatedRoute: "/pahadi-a2-ghee",
+    description: "Our authentic A2 Gir Cow Ghee is made using the traditional bilona method. 25 litres of fresh milk go into every litre of our hand-churned ghee — nothing else does. Grass-fed and lab-tested for purity.",
+    variants: [
+      { id: "a2-200", weight: "200g", price: 499, mrp: 649 },
+      { id: "a2-500", weight: "500g", price: 1149, mrp: 1399 },
+      { id: "a2-1l", weight: "1L", price: 2149, mrp: 2599 },
+    ],
   },
   {
-    id: "a2-1l",
-    name: "A2 Gir Cow Ghee 1 Litre",
-    subtitle: "Family jar, 25 litres of milk per litre of ghee",
-    type: "Cow",
-    weight: "1L",
-    price: 2149,
-    mrp: 2599,
+    id: "raw-honey",
+    name: "Organic Raw Honey",
+    subtitle: "Unprocessed, unfiltered pure wildflower honey",
+    type: "Honey",
     rating: 4.8,
-    reviews: 531,
-    popularity: 91,
-    added: 4,
-    image: jarA2,
-    tag: "Best value",
-  },
-  {
-    id: "pahadi-200",
-    name: "Pure Pahadi Ghee 200g",
-    subtitle: "Himalayan hill cows grazing on wild herbs",
-    type: "Cow",
-    weight: "200g",
-    price: 549,
-    mrp: 699,
-    rating: 4.5,
-    reviews: 168,
-    popularity: 64,
-    added: 7,
-    image: jarPahadi,
-  },
-  {
-    id: "pahadi-500",
-    name: "Pure Pahadi Ghee 500g",
-    subtitle: "Hand-churned in the hills of Uttarakhand",
-    type: "Cow",
-    weight: "500g",
-    price: 1249,
-    mrp: 1549,
-    rating: 4.7,
-    reviews: 392,
-    popularity: 85,
+    reviews: 320,
+    popularity: 90,
     added: 8,
-    image: jarPahadi,
-    tag: "New",
+    image: rawHoney,
+    tag: "Pure",
+    description: "Harvested directly from wild beehives, our raw honey retains all natural enzymes and pollens. No added sugar, unpasteurized, and completely pure.",
+    variants: [
+      { id: "honey-250", weight: "250g", price: 349, mrp: 499 },
+      { id: "honey-500", weight: "500g", price: 599, mrp: 799 },
+    ],
   },
   {
-    id: "pahadi-1l",
-    name: "Pure Pahadi Ghee 1 Litre",
-    subtitle: "Deep aroma, granular texture, small batch",
-    type: "Cow",
-    weight: "1L",
-    price: 2349,
-    mrp: 2799,
-    rating: 4.8,
-    reviews: 246,
-    popularity: 77,
+    id: "mustard-oil",
+    name: "Cold-Pressed Mustard Oil",
+    subtitle: "Kachi ghani, pungent and pure",
+    type: "Oil",
+    rating: 4.7,
+    reviews: 156,
+    popularity: 85,
     added: 6,
-    image: jarPahadi,
+    image: mustardOil,
+    description: "Extracted using traditional wooden kolhus (cold-pressed) at low temperatures to retain its strong flavor, aroma, and nutritional properties. Ideal for Indian cooking.",
+    variants: [
+      { id: "mustard-500", weight: "500g", price: 249, mrp: 299 },
+      { id: "mustard-1l", weight: "1L", price: 449, mrp: 549 },
+    ],
   },
   {
-    id: "buffalo-250",
-    name: "Buffalo Ghee 250g",
-    subtitle: "Creamy white, rich in healthy fats",
-    type: "Buffalo",
-    weight: "250g",
-    price: 449,
-    mrp: 549,
-    rating: 4.3,
-    reviews: 121,
-    popularity: 48,
-    added: 1,
-    image: jarBuffalo,
+    id: "white-quinoa",
+    name: "Organic White Quinoa",
+    subtitle: "High-protein, gluten-free superfood",
+    type: "Superfood",
+    rating: 4.6,
+    reviews: 210,
+    popularity: 82,
+    added: 7,
+    image: quinoaPack,
+    tag: "Healthy",
+    description: "Sustainably sourced, our organic white quinoa is a complete protein packed with essential amino acids, fiber, and minerals. Perfect for salads and bowls.",
+    variants: [
+      { id: "quinoa-500", weight: "500g", price: 399, mrp: 499 },
+      { id: "quinoa-1kg", weight: "1kg", price: 699, mrp: 899 },
+    ],
   },
   {
-    id: "buffalo-1l",
-    name: "Buffalo Ghee 1 Litre",
-    subtitle: "Ideal for sweets, halwa and everyday cooking",
-    type: "Buffalo",
-    weight: "1L",
-    price: 1649,
-    mrp: 1999,
-    rating: 4.4,
-    reviews: 203,
-    popularity: 59,
+    id: "turmeric-powder",
+    name: "Organic Turmeric Powder",
+    subtitle: "High curcumin, single-origin",
+    type: "Spice",
+    rating: 4.9,
+    reviews: 410,
+    popularity: 88,
+    added: 9,
+    image: turmericPowder,
+    description: "Bright yellow and deeply aromatic, our organic turmeric powder is sustainably farmed and stone-ground to preserve its high curcumin content and natural oils.",
+    variants: [
+      { id: "turmeric-200", weight: "200g", price: 199, mrp: 249 },
+    ],
+  },
+  {
+    id: "pahadi-haldi",
+    name: "Pahadi Organic Haldi",
+    subtitle: "High Curcumin (5%+), stone-ground mountain turmeric from Uttarakhand",
+    type: "Spice",
+    rating: 4.95,
+    reviews: 384,
+    popularity: 95,
     added: 2,
-    image: jarBuffalo,
+    image: "/pahadi-haldi.jpg",
+    tag: "High Curcumin",
+    description: "Hand-harvested in the high-altitude terraced farms of Uttarakhand, our Pahadi Haldi (Turmeric) is sun-dried and traditionally stone-ground. Known for its distinct vibrant orange-yellow hue, intense aroma, and powerful anti-inflammatory properties with over 5% natural curcumin content.",
+    variants: [
+      { id: "haldi-200", weight: "200g", price: 249, mrp: 329 },
+      { id: "haldi-500", weight: "500g", price: 549, mrp: 699 },
+    ],
+  },
+  {
+    id: "pahadi-shilajit",
+    name: "Pure Pahadi Shilajit",
+    subtitle: "Mineral-rich Himalayan resin, purified in small batches",
+    type: "Resin",
+    rating: 4.7,
+    reviews: 146,
+    popularity: 80,
+    added: 1,
+    image: shilajit,
+    description: "Sourced from the pristine heights of the Himalayas, our pure shilajit is meticulously purified. A natural source of fulvic acid and trace minerals.",
+    variants: [
+      { id: "shilajit-20", weight: "20g", price: 1299, mrp: 1599 },
+    ],
   },
 ];
 
@@ -162,24 +158,80 @@ export const reviews = [
     name: "Ananya Sharma",
     city: "Bengaluru",
     rating: 5,
-    text: "The A2 500g jar smells exactly like my grandmother's kitchen. Granular, aromatic and it lasts long.",
+    text: "The A2 Ghee smells exactly like my grandmother's kitchen in Dehradun. Granular, deeply aromatic, and pure!",
+    product: "Pahadi A2 Gir Cow Ghee",
+    date: "Verified Buyer",
   },
   {
     name: "Rohit Verma",
     city: "Delhi",
     rating: 5,
-    text: "Switched from a supermarket brand and there is no comparison. The Pahadi ghee has a nutty depth to it.",
+    text: "Switched from commercial store brands to Dharti Organics. The raw honey and Pahadi ghee are unmatched in quality.",
+    product: "Organic Raw Wild Honey",
+    date: "Verified Buyer",
   },
   {
     name: "Meera Iyer",
     city: "Pune",
-    rating: 4,
-    text: "Delivery was quick and the jar arrived sealed well. My son's rotis finally taste like home.",
+    rating: 5,
+    text: "Delivery was quick and the amber glass jar arrived sealed in protective padding. My family loves the rich taste.",
+    product: "Pahadi A2 Gir Cow Ghee",
+    date: "Verified Buyer",
   },
   {
     name: "Karan Gill",
     city: "Chandigarh",
     rating: 5,
-    text: "Buffalo ghee for sweets is unbeatable. Ordered the 1 litre jar twice already this year.",
+    text: "The cold-pressed mustard oil has that authentic, sharp kachi ghani aroma. Perfect for traditional Indian cooking.",
+    product: "Cold-Pressed Mustard Oil",
+    date: "Verified Buyer",
+  },
+  {
+    name: "Dr. Sunita Rao",
+    city: "Hyderabad",
+    rating: 5,
+    text: "As a nutritionist, I am very picky about oils and ghee. Dharti Organics lab report transparency sold me completely.",
+    product: "Pahadi A2 Gir Cow Ghee",
+    date: "Verified Buyer",
+  },
+  {
+    name: "Vikramaditya Joshi",
+    city: "Dehradun",
+    rating: 5,
+    text: "Being a native Pahadi myself, I can verify this is 100% genuine bilona ghee crafted the traditional mountain way.",
+    product: "Pahadi A2 Gir Cow Ghee",
+    date: "Verified Buyer",
+  },
+  {
+    name: "Pooja Hegde",
+    city: "Mumbai",
+    rating: 5,
+    text: "The stone-ground organic turmeric powder is so vibrant and aromatic. You can immediately tell it has high curcumin.",
+    product: "Organic Turmeric Powder",
+    date: "Verified Buyer",
+  },
+  {
+    name: "Rajesh Bhatia",
+    city: "Jaipur",
+    rating: 5,
+    text: "Pure Himalayan Shilajit resin. Felt a noticeable boost in energy levels within a week of regular morning use.",
+    product: "Pure Pahadi Shilajit",
+    date: "Verified Buyer",
+  },
+  {
+    name: "Sneha Mukherjee",
+    city: "Kolkata",
+    rating: 5,
+    text: "The organic white quinoa cooks light and fluffy every single time. Clean, dust-free packaging and great taste!",
+    product: "Organic White Quinoa",
+    date: "Verified Buyer",
+  },
+  {
+    name: "Amitabh Sen",
+    city: "Lucknow",
+    rating: 5,
+    text: "Honest brand, transparent lab reports, and direct farmer support. Will definitely be reordering every month.",
+    product: "Organic Food Staples",
+    date: "Verified Buyer",
   },
 ];
